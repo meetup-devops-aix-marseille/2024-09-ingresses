@@ -1,0 +1,250 @@
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08950-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08950-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08951-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08951-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08952-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08952-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08953-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08953-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08954-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08954-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08955-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08955-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08956-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08956-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08957-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08957-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08958-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08958-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 08959-ingressss-notls-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-notls-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "08959-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80

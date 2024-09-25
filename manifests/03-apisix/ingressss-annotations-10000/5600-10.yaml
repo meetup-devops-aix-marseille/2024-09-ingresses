@@ -1,0 +1,300 @@
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05600-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05600-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05601-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05601-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05602-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05602-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05603-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05603-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05604-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05604-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05605-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05605-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05606-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05606-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05607-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05607-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05608-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05608-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+---
+# Source: ingressss/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 05609-ingressss-annotations-10000
+  labels:
+    helm.sh/chart: ingressss-0.1.0
+    app.kubernetes.io/name: ingressss
+    app.kubernetes.io/instance: ingressss-annotations-10000
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    k8s.apisix.apache.org/blocklist-source-range: 172.17.0.0/16
+    k8s.apisix.apache.org/cors-allow-methods: GET,POST
+    k8s.apisix.apache.org/http-block-method: PUT,DELETE
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+spec:
+  ingressClassName: apisix
+  rules:
+    - host: "05609-hello.apisix-lab.wmars.party"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80

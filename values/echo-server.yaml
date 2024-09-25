@@ -1,0 +1,18 @@
+replicaCount: 4
+
+service:
+  annotations: {}
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  annotations:
+    webofmars.com/refresh: "001"
+  hosts:
+    - host: hello.labs.wmars.party
+      paths:
+        - /
+  # tls:
+  #   - secretName: echo-server-tls
+  #     hosts:
+  #       - hello.labs.wmars.party

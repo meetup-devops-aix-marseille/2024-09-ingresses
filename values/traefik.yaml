@@ -1,0 +1,38 @@
+ingressClass:
+  isDefaultClass: false
+
+deployment:
+  replicas: 2
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 0
+
+resources:
+  requests:
+    cpu: 1
+    memory: 1024Mi
+  limits:
+    cpu: 1
+    memory: 1024Mi
+
+logs:
+  access:
+    enabled: true
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: '{{ template "traefik.name" . }}'
+            app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
+        topologyKey: kubernetes.io/hostname
+nodeSelector:
+  nodepool: ingress
+tolerations:
+  - key: "type"
+    operator: "Equal"
+    value: "ingress-controller"
+    effect: "NoSchedule"

@@ -1,0 +1,17 @@
+ingress:
+  start: 0
+  number: 10
+  backendServiceName: "echo-server"
+  backendServicePort: 80
+  className: "traefik"
+  annotations: {}
+  hosts:
+    - host: hello.traefik-lab.wmars.party
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  # tls:
+  #   - secretName: hello-labs-tls
+  #     hosts:
+  #       - hello.traefik-lab.wmars.party

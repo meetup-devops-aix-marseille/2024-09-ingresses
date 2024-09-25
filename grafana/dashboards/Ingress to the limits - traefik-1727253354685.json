@@ -1,0 +1,894 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_VICTORIAMETRICS",
+      "label": "VictoriaMetrics",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {
+    "cdxr5656b1ts0c": {
+      "name": "%age of cpu limits",
+      "uid": "cdxr5656b1ts0c",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "% of cpu limits",
+              "axisPlacement": "auto",
+              "axisSoftMax": 102,
+              "axisSoftMin": 0,
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "dashed"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P4169E866C3094E38"
+            },
+            "editorMode": "code",
+            "expr": "100 * sum(rate(container_cpu_usage_seconds_total{cluster=\"$cluster\", namespace=\"$namespace\", container!=\"\"}[1m])) by (pod)\n  / sum(kube_pod_container_resource_limits{job=\"kube-state-metrics\", cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"}) by (pod)",
+            "instant": false,
+            "legendFormat": "",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "CPU limits %age",
+        "type": "timeseries"
+      }
+    },
+    "bdxr60ygsqj9cd": {
+      "name": "%age memory limits",
+      "uid": "bdxr60ygsqj9cd",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "% of memory limits",
+              "axisPlacement": "auto",
+              "axisSoftMax": 100,
+              "axisSoftMin": 0,
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "dashed"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P4169E866C3094E38"
+            },
+            "editorMode": "code",
+            "expr": "100 * sum(container_memory_usage_bytes{cluster=\"$cluster\", namespace=\"$namespace\", container!=\"\"}) by (pod)\n  / sum(kube_pod_container_resource_limits{job=\"kube-state-metrics\", cluster=\"$cluster\", namespace=\"$namespace\", resource=\"memory\"}) by (pod)",
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "%age memory limits",
+        "type": "timeseries"
+      }
+    },
+    "fdxotstz41kw0c": {
+      "name": "Number of Ingress",
+      "uid": "fdxotstz41kw0c",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_VICTORIAMETRICS}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "axisSoftMin": 0,
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P4169E866C3094E38"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "sum(kube_ingress_info)",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Number of Ingress",
+        "type": "timeseries"
+      }
+    },
+    "bdy9d9vpcivi8b": {
+      "name": "Ingress creation rate by min",
+      "uid": "bdy9d9vpcivi8b",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_VICTORIAMETRICS}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P4169E866C3094E38"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "rate(count(kube_ingress_created)[1m])",
+            "fullMetaSearch": false,
+            "includeNullMetadata": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "Ingress creation rate by min",
+        "type": "timeseries"
+      }
+    },
+    "bdxoty0vu0wsgb": {
+      "name": "ETCD Usage",
+      "uid": "bdxoty0vu0wsgb",
+      "kind": 1,
+      "model": {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "$datasource"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P4169E866C3094E38"
+            },
+            "editorMode": "code",
+            "expr": "ovh_mks_etcd_usage_usage_bytes{}",
+            "instant": false,
+            "legendFormat": "usage",
+            "range": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "$datasource"
+            },
+            "editorMode": "code",
+            "expr": "ovh_mks_etcd_usage_quota_bytes{}",
+            "hide": false,
+            "instant": false,
+            "legendFormat": "quota",
+            "range": true,
+            "refId": "B"
+          }
+        ],
+        "title": "ETCD Usage",
+        "type": "timeseries"
+      }
+    }
+  },
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "libraryPanel": {
+        "uid": "cdxr5656b1ts0c",
+        "name": "%age of cpu limits"
+      }
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 10,
+      "libraryPanel": {
+        "uid": "bdxr60ygsqj9cd",
+        "name": "%age memory limits"
+      }
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 12,
+      "libraryPanel": {
+        "uid": "fdxotstz41kw0c",
+        "name": "Number of Ingress"
+      }
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 14,
+      "libraryPanel": {
+        "uid": "bdy9d9vpcivi8b",
+        "name": "Ingress creation rate by min"
+      }
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 16,
+      "libraryPanel": {
+        "uid": "bdxoty0vu0wsgb",
+        "name": "ETCD Usage"
+      }
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VICTORIAMETRICS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 16
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VICTORIAMETRICS}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "traefik_config_reloads_total",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Traefik last reload",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 16
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VICTORIAMETRICS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(go_gc_duration_seconds{namespace=\"$namespace\"}) by (container)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Go GC duration (sec)",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "VictoriaMetrics",
+          "value": "P4169E866C3094E38"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_VICTORIAMETRICS}"
+        },
+        "definition": "label_values(up{job=\"kube-state-metrics\"},cluster)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(up{job=\"kube-state-metrics\"},cluster)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_VICTORIAMETRICS}"
+        },
+        "definition": "label_values(kube_namespace_status_phase{job=\"kube-state-metrics\", cluster=\"cluster-name\"},namespace)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(kube_namespace_status_phase{job=\"kube-state-metrics\", cluster=\"cluster-name\"},namespace)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Ingress to the limits - traefik",
+  "uid": "cdqjaxyflb8cge",
+  "version": 19,
+  "weekStart": ""
+}

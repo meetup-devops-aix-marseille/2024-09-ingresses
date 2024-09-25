@@ -1,0 +1,21 @@
+ingress:
+  start: 0
+  number: 10
+  backendServiceName: "echo-server"
+  backendServicePort: 80
+  className: "traefik"
+  annotations:
+    traefik.ingress.kubernetes.io/router.priority: "42"
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+    traefik.ingress.kubernetes.io/router.tls.options: default@file
+    traefik.ingress.kubernetes.io/router.middlewares: default-headers@kubernetescrd
+
+  hosts:
+    - host: hello.lab.wmars.party
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  # tls:
+  #   - secretName: hello-labs-tls
+  #     hosts:
+  #       - hello.lab.wmars.party

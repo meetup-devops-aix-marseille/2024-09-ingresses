@@ -1,0 +1,21 @@
+ingress:
+  start: 0
+  number: 10
+  backendServiceName: "echo-server"
+  backendServicePort: 80
+  className: "apisix"
+  annotations:
+    k8s.apisix.apache.org/cors-allow-methods: "GET,POST"
+    k8s.apisix.apache.org/http-block-method: "PUT,DELETE"
+    k8s.apisix.apache.org/blocklist-source-range: "172.17.0.0/16"
+    k8s.apisix.apache.org/response-rewrite-body-base64: "true"
+  hosts:
+    - host: hello.apisix-lab.wmars.party
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  # tls:
+  #   - secretName: hello-labs-tls
+  #     hosts:
+  #       - hello.apisix-lab.wmars.party

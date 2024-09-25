@@ -1,0 +1,34 @@
+victoria-metrics-operator:
+  operator:
+    disable_prometheus_converter: false
+
+alertmanager:
+  enabled: false
+vmalert:
+  enabled: false
+
+grafana:
+  enabled: true
+  persistence:
+    type: pvc
+    enabled: true
+    size: 10Gi
+  ingress:
+    hosts:
+      - grafana.wmars.party
+    tls:
+      - secretName: grafana-tls
+        hosts:
+          - grafana.wmars.party
+
+kubelet:
+  enabled: true
+
+  # -- Enable scraping /metrics/cadvisor from kubelet's service
+  cadvisor: true
+  # -- Enable scraping /metrics/probes from kubelet's service
+  probes: true
+  # spec for VMNodeScrape crd
+  # https://docs.victoriametrics.com/operator/api.html#vmnodescrapespec
+  spec:
+    interval: "10s"

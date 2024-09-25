@@ -1,0 +1,51 @@
+controller:
+  config:
+    # service-upstream: "true"
+    worker-processes: "4"
+  admissionWebhooks:
+    enabled: false
+  replicaCount: 2
+  updateStrategy:
+    type: Recreate
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      scrapeInterval: 5s
+      namespace: monitoring
+  resources:
+    requests:
+      cpu: 1
+      # memory: 1024Mi
+      memory: 4096Mi
+    limits:
+      cpu: 1
+      # memory: 1024Mi
+      memory: 4096Mi
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - ingress-nginx
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+              - ingress-nginx
+            - key: app.kubernetes.io/component
+              operator: In
+              values:
+              - controller
+          topologyKey: kubernetes.io/hostname
+  nodeSelector:
+    nodepool: ingress
+  tolerations:
+    - key: "type"
+      operator: "Equal"
+      value: "ingress-controller"
+      effect: "NoSchedule"

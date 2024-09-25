@@ -1,0 +1,28 @@
+ingress:
+  start: 0
+  number: 10
+  backendServiceName: "echo-server"
+  backendServicePort: 80
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/limit-connections: "100"
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+    nginx.ingress.kubernetes.io/limit-rpm: "100"
+    nginx.ingress.kubernetes.io/limit-whitelist: "169.155.251.7/32"
+    nginx.ingress.kubernetes.io/whitelist-source-range: "169.155.251.7/32"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "5"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "5"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "5"
+    nginx.ingress.kubernetes.io/proxy-next-upstream: "error timeout invalid_header http_500 http_502 http_503 http_504"
+    nginx.ingress.kubernetes.io/proxy-next-upstream-timeout: "0"
+    nginx.ingress.kubernetes.io/proxy-next-upstream-tries: "3"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+  hosts:
+    - host: hello.lab.wmars.party
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  # tls:
+  #   - secretName: hello-labs-tls
+  #     hosts:
+  #       - hello.lab.wmars.party

@@ -1,0 +1,46 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: traefik
+  namespace: monitoring
+spec:
+  podMetricsEndpoints:
+    - interval: 5s
+      path: /metrics
+      targetPort: 9100
+  namespaceSelector:
+    matchNames:
+      - traefik
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
+      app.kubernetes.io/instance: traefik-traefik
+---
+# apiVersion: operator.victoriametrics.com/v1beta1
+# kind: VMServiceScrape
+# metadata:
+#   annotations:
+#     meta.helm.sh/release-name: traefik
+#     meta.helm.sh/release-namespace: traefik
+#   labels:
+#     app.kubernetes.io/component: controller
+#     app.kubernetes.io/instance: traefik
+#     app.kubernetes.io/managed-by: Helm
+#     app.kubernetes.io/name: traefik
+#     app.kubernetes.io/part-of: traefik
+#     app.kubernetes.io/version: 1.10.0
+#     helm.sh/chart: traefik-4.10.0
+#   name: traefik
+#   namespace: monitoring
+# spec:
+#   endpoints:
+#   - interval: 5s
+#     targetPort: 9100
+#     path: /metrics
+#   namespaceSelector:
+#     matchNames:
+#     - traefik
+#   selector:
+#     matchLabels:
+#       app.kubernetes.io/name: traefik
+#       app.kubernetes.io/instance: traefik-traefik

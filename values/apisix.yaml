@@ -1,0 +1,239 @@
+replicaCount: 1
+
+apisix:
+  admin:
+    enabled: true # default
+    allow:
+      ipList:
+        - 0.0.0.0/0
+    # api du controlplane
+    ingress:
+      enabled: false
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      className: apisix
+      hosts:
+        - host: admin.apisix-lab.wmars.party
+          paths:
+            - "/apisix"
+      tls:
+        - secretName: admin-tls
+          hosts:
+            - admin.apisix-lab.wmars.party
+  discovery:
+    enabled: true
+    registry:
+      kubernetes: {}
+      dns:
+        servers:
+          - 10.3.0.10:53 # CoreDNS service IP address
+  prometheus:
+    enabled: true
+  ssl:
+    enabled: true
+
+service:
+  type: LoadBalancer
+
+ingress:
+  # dataplane / entrypoint
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  className: apisix
+  hosts:
+    - host: ing.apisix-lab.wmars.party
+      paths:
+        - /
+  tls:
+    - secretName: ing-tls
+      hosts:
+        - ing.apisix-lab.wmars.party
+
+serviceAccount:
+  create: true
+  name: apisix
+
+rbac:
+  create: true
+
+metrics:
+  serviceMonitor:
+    enabled: true
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 1024Mi
+  limits:
+    cpu: 250m
+    memory: 1024Mi
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - ingress-controller
+          - key: app.kubernetes.io/instance
+            operator: In
+            values:
+            - ingress-controller
+          - key: app.kubernetes.io/component
+            operator: In
+            values:
+            - controller
+        topologyKey: kubernetes.io/hostname
+
+nodeSelector:
+  nodepool: ingress
+
+tolerations:
+  - key: "type"
+    operator: "Equal"
+    value: "ingress-controller"
+    effect: "NoSchedule"
+
+# deps
+etcd:
+  resources:
+    requests:
+      cpu: 300m
+      memory: 1024Mi
+    limits:
+      cpu: 300m
+      memory: 1024Mi
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - ingress-controller
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+              - ingress-controller
+            - key: app.kubernetes.io/component
+              operator: In
+              values:
+              - controller
+          topologyKey: kubernetes.io/hostname
+  nodeSelector:
+    nodepool: ingress
+  tolerations:
+    - key: "type"
+      operator: "Equal"
+      value: "ingress-controller"
+      effect: "NoSchedule"
+
+  readinessProbe:
+    initialDelaySeconds: 5
+  livenessProbe:
+    initialDelaySeconds: 5
+
+dashboard:
+  enabled: true
+  replicaCount: 1
+  ingress:
+    # UI du controplane
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+    className: apisix
+    hosts:
+      - host: dashboard.apisix-lab.wmars.party
+        paths:
+          - /
+    tls:
+      - secretName: dashboard-tls
+        hosts:
+          - dashboard.apisix-lab.wmars.party
+  resources:
+    requests:
+      cpu: 250m
+      memory: 1024Mi
+    limits:
+      cpu: 250m
+      memory: 1024Mi
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - ingress-controller
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+              - ingress-controller
+            - key: app.kubernetes.io/component
+              operator: In
+              values:
+              - controller
+          topologyKey: kubernetes.io/hostname
+  nodeSelector:
+    nodepool: ingress
+  tolerations:
+    - key: "type"
+      operator: "Equal"
+      value: "ingress-controller"
+      effect: "NoSchedule"
+
+ingress-controller:
+  enabled: true
+
+  config:
+    apisix:
+      adminApiVersion: v3
+      serviceName: apisix-admin
+      serviceNamespace: ingress-apisix
+
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 250m
+      memory: 1024Mi
+    limits:
+      cpu: 250m
+      memory: 1024Mi
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - ingress-controller
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+              - ingress-controller
+            - key: app.kubernetes.io/component
+              operator: In
+              values:
+              - controller
+          topologyKey: kubernetes.io/hostname
+  nodeSelector:
+    nodepool: ingress
+  tolerations:
+    - key: "type"
+      operator: "Equal"
+      value: "ingress-controller"
+      effect: "NoSchedule"

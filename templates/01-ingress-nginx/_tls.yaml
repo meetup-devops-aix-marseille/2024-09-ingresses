@@ -1,0 +1,17 @@
+ingress:
+  start: 0
+  number: 10
+  backendServiceName: "echo-server"
+  backendServicePort: 80
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  hosts:
+    - host: hello.lab.wmars.party
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: hello-labs-tls
+      hosts:
+        - hello.lab.wmars.party
